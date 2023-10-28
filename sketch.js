@@ -2,10 +2,6 @@ let rains = []
 
 function setup() {
   createCanvas(400, 400);
-  for (let i = 0; i < 10; i = i + 1) {
-    let rain = new Rain(random(width),200);
-    rains.push(rain);
-  }
 }
 
 function draw() {
@@ -16,6 +12,10 @@ let gravity = createVector(0, random(0.2,1));
     rain.applyforce(gravity);
     rain.update();
 rain.show()
+  }
+  for (let i = 0; i < 7; i = i + 1) {
+    let rain = new Rain(random(width),0);
+    rains.push(rain);
   }
 }
 
