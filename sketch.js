@@ -11,7 +11,6 @@ function setup() {
 function draw() {
   background(20);
   for(let rain of rains){
-rain.
 rain.display()
   }
 }
