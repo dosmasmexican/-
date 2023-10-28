@@ -3,8 +3,8 @@ let rains = []
 function setup() {
   createCanvas(400, 400);
   for (let i = 0; i < 10; i = i + 1) {
-    let rain = new rain(radom(width),200);
-    rain.push(rains);
+    let rain = new Rain(random(width),200);
+    rains.push(rain);
   }
 }
 
@@ -15,7 +15,7 @@ rain.display()
   }
 }
 
-class rain{
+class Rain{
   constructor(x,y){
     this.pos = createVector(x,y);
     this.len = random(15,30);
