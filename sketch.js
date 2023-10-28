@@ -1,7 +1,7 @@
 let rains = []
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 600);
 }
 
 function draw() {
@@ -36,9 +36,17 @@ update(){
   this.pos.add(this.vel);
 
   this.acc.mult(0);
+
+  if (this.pos.y - this.len > height) {
+    rains.shift();
+  }
+
+  if(this.pos.y>height+50){
+    this.pos.y = height+50
+  }
 }
   show(){
     stroke(255,this.thick);
-    line(this.pos.x, this.pos.y, this.pos.x, this.pos.y+this.len)
+    line(this.pos.x, this.pos.y, this.pos.x, this.pos.y-this.len)
   }
 }
