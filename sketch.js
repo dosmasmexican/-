@@ -7,9 +7,18 @@ function setup() {
 function draw() {
   background(20);
 let gravity = createVector(0, random(0.2,1));
+let wind = createVector(0.1, 0);
+
+if (mouseIsPressed) {
+  let wind = createVector(0.1, 0);
+  mover.applyForce(wind);
+}
 
   for(let rain of rains){
     rain.applyforce(gravity);
+    if (mouseIsPressed) {
+      rain.applyforce(wind);
+    }
     rain.update();
 rain.show()
   }
@@ -31,6 +40,7 @@ class Rain{
   applyforce(force){
     this.acc.add(force)
   }
+
 update(){
   this.vel.add(this.acc);
   this.pos.add(this.vel);
