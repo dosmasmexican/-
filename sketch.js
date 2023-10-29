@@ -1,12 +1,12 @@
 let rains = []
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(400, 400);
 }
 
 function draw() {
   background(20);
-let gravity = createVector(0, random(0.2,1));
+let gravity = createVector(0, 0.2);
 let windA = createVector(0.1, 0);
 let windB = createVector(-0.1, 0);
 
@@ -21,7 +21,7 @@ let windB = createVector(-0.1, 0);
     rain.update();
 rain.show()
   }
-  
+
   for (let i = 0; i < 7; i = i + 1) {
     let rain = new Rain(random(width),0);
     rains.push(rain);
@@ -35,10 +35,12 @@ class Rain{
     this.acc = createVector();
     this.len = random(15,30);
     this.thick = random(255);
+    this.mass = this.len * this.thick
   }
 
   applyforce(force){
-    this.acc.add(force)
+    let f = p5.Vector.div(force, this.mass*0.0005);
+    this.acc.add(f)
   }
 
 update(){
