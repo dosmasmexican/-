@@ -7,21 +7,21 @@ function setup() {
 function draw() {
   background(20);
 let gravity = createVector(0, random(0.2,1));
-let wind = createVector(0.1, 0);
-
-if (mouseIsPressed) {
-  let wind = createVector(0.1, 0);
-  mover.applyForce(wind);
-}
+let windA = createVector(0.1, 0);
+let windB = createVector(-0.1, 0);
 
   for(let rain of rains){
     rain.applyforce(gravity);
-    if (mouseIsPressed) {
-      rain.applyforce(wind);
+    if (keyIsDown(37)) {
+      rain.applyforce(windA);
+    }
+    if (keyIsDown(39)) {
+      rain.applyforce(windB);
     }
     rain.update();
 rain.show()
   }
+  
   for (let i = 0; i < 7; i = i + 1) {
     let rain = new Rain(random(width),0);
     rains.push(rain);
